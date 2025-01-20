@@ -14,7 +14,7 @@ public class PersonGenerator {
         String lastName = "";
         String title = "";
         String yearOfBirth = ""; //entry will be converted from an int to String for file writing
-        String separator =","
+        String separator =",";
 
         File workingDirectory = new File(System.getProperty("user.dir"));
         Path file = Paths.get(workingDirectory.getPath() + "\\src\\data.txt");
