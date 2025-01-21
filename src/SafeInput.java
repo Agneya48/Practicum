@@ -46,14 +46,14 @@ public class SafeInput {
         String buffer = ""; //Again, just decided using wrappers to parse is less headache.
 
         do {
-            System.out.print("\n" + prompt + ": ");
+            System.out.print(prompt + ": ");
             buffer = pipe.nextLine();
 
             try {
                 retDouble = Double.parseDouble(buffer);
                 okInput = true;
             } catch (NumberFormatException error) {
-                System.out.print("Invalid double parsing " + error.getMessage());
+                System.out.println("Invalid");
                 okInput = false;
             }
 

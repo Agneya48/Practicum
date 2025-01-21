@@ -4,53 +4,48 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PersonGenerator {
+public class Product {
     public static void main(String[] args) {
 
-        ArrayList <String>allPersonRecs = new ArrayList<>();
+        ArrayList <String> allProductRecs = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         boolean done = false;
 
-        String personRec = "";
+        String productRec = "";
         String ID = "";
-        String firstName = "";
-        String lastName = "";
-        String title = "";
-        String yearOfBirth = ""; /* I prefer using RegEx for date of birth, and thus set it to a String
-        getRangedInt will also work if it's ever important to have an int value before
-        converting to a String for file writing (like doing calculations before saving)
-         */
+        String name = "";
+        String description = "";
+        double cost = 0.0;
         String div =",";
 
         do {
             System.out.println();
-            System.out.println("New Person Entry");
+            System.out.println("New Product Entry");
             ID = SafeInput.getRegExString(in, "Enter the ID [6 digits]", "\\d{6}");
-            firstName = SafeInput.getNonZeroLenString(in, "Enter the first name");
-            lastName = SafeInput.getNonZeroLenString(in, "Enter the last name");
-            title = SafeInput.getNonZeroLenString(in, "Enter the title");
-            yearOfBirth = SafeInput.getRegExString(in, "Enter year of birth [4 digits]", "\\d{4}");
+            name = SafeInput.getNonZeroLenString(in, "Enter product name");
+            description = SafeInput.getNonZeroLenString(in, "Enter description");
+            cost = SafeInput.getDouble(in, "Enter cost");
 
-            personRec = ID + div + firstName + div + lastName + div + title + div + yearOfBirth;
+            productRec = ID + div + name + div + description + div + cost;
             System.out.println();
-            System.out.println(personRec);
+            System.out.println(productRec);
             System.out.println();
 
             done = SafeInput.getYNConfirm(in, "Data entry complete? [Y/N]");
 
-            allPersonRecs.add(personRec);
+            allProductRecs.add(productRec);
 
         }while(!done);
 
         in.close();
 
         File workingDirectory = new File(System.getProperty("user.dir"));
-        Path file = Paths.get(workingDirectory.getPath() + "\\src\\personTestData.txt");
+        Path file = Paths.get(workingDirectory.getPath() + "\\src\\productTestData.txt");
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.toFile())))
         {
 
-            for(String rec : allPersonRecs)
+            for(String rec : allProductRecs)
             {
                 writer.write(rec, 0, rec.length());
                 // 0 is where to start (1st char) the write
