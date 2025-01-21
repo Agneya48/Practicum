@@ -130,7 +130,7 @@ public class SafeInput {
                 done = true;
             }
             else {
-                System.out.print("Invalid input. Please pick either 'y' or 'n'");
+                System.out.print("Invalid. Please pick either y/yes or n/no");
             }
         } while(!done);
 
