@@ -42,6 +42,8 @@ public class PersonGenerator {
 
         }while(!done);
 
+        in.close();
+
         File workingDirectory = new File(System.getProperty("user.dir"));
         Path file = Paths.get(workingDirectory.getPath() + "\\src\\personData.txt");
 
